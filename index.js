@@ -72,10 +72,8 @@ const purchases = [
 // #1 // 
 const getNumberEntries = (object) => {
 //create a function that takes in 1 param, a purchase object.
-  stArr =[];
-  for (let [key,value] in object){
-    let stArr = object.filter((keys) => typeof value === 'number' ? [key, value] : 0 );
-    }
+    let stArr = object.filter((keys) => typeof keys.value === 'number');
+  return stArr;
   };
 //each sub array should include the key and the value from the object 
 //IF the value is a number datataype.
@@ -125,12 +123,13 @@ console.log(accumulateString(purchases))
 // #6 //
 const findProduct = (array, product) => {
   //base case - if the iteration's product description matches product
-if (array[0].product === product){
+let newArray = array;
+if (newArray[0].product === product){
   // loop through array by calling findproduct() again on what?
-  return array[0];
+  return newArray;
 } else {
-  array = array.slice(0,1);
-  return findProduct(array, product)
+  newArray = newArray.slice(0,1);
+  return findProduct(newArray, product)
 }};
 
 // #7 //
