@@ -83,17 +83,20 @@ const getNumberEntries = (object) => {
 // #2 // 
 
 const addKeyValuePairs = (object, additions) => {
+  console.log(additions);
+  console.log(additions[0]);
+  console.log(additions[0][0]);
+  console.log(additions[0][1]);
   if (additions = []){
     return object;
   } else {
   object.additions[0][0] += additions[0][1];
   additions = additions.slice(0,1);
-  console.log(additions)
   return addKeyValuePairs(object, additions);
   }
 };
 
-console.log(addKeyValuePairs(purchases[1], [ ['purchasedPreviously', false], ['initiatedReturn', true] ]));
+console.log(addKeyValuePairs(purchases[2], [ ['purchasedPreviously', false], ['initiatedReturn', true] ]));
 
 // #3 //
 const filterByPrice = (array, price) => {
@@ -112,7 +115,7 @@ const mapPurchases = (array) => {
 // #5 //
 const accumulateString = (array) => {
   let blankString = '';
-  let newString = array.reduce((blankString, current) => current.product[current.quantity.length-1] + blankString, ' ');
+  let newString = array.reduce((blanksString, current) => current.product[current.quantity]+ ' ');
   console.log(newString);
   return (newString);
 
@@ -138,7 +141,7 @@ const filterByReviewLength = (array) => {
 let stArr = [];
   for (i = 0; i < array.length; i++){
     let purchase = array[i];
-  let reviews = purchase.mostLikedReviews.filter((review) =>  review.length > 35);
+  let reviews = purchase.mostLikedReviews.filter((review) =>  review.text.length > 35);
   stArr.push(reviews);
 }
 return stArr;
