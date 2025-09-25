@@ -105,7 +105,7 @@ const filterByPrice = (array, price) => {
 
 // #4 //
 const mapPurchases = (array) => {
-  let newArr = array.map((purchase) => purchase.product.toUpperCase() + " - " + "Review: " + purchase.mostLikedReviews[0].text);
+  let newArr = array.map((purchase) => purchase.product.toUpperCase() + " - " + "Review: " + purchase.mostLikedReviews[purchase.mostLikedReviews.length -1].text);
   console.log(newArr);
   return newArr;
 };
@@ -145,3 +145,22 @@ return stArr;
 };
 
 
+
+/*
+
+what happens when we invoke map?
+
+map:
+    it returns an array
+filter:
+    it returns an array
+
+
+reduce:
+  it returns a string?
+
+
+
+
+
+*/
