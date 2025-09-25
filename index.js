@@ -76,21 +76,26 @@ const getNumberEntries = (object) => {
   for (let [key,value] in object){
     let stArr = object.filter((keys) => typeof value === 'number' ? [key, value] : 0 );
     }
-    console.log(stArr);
-  }
+  };
 //each sub array should include the key and the value from the object 
 //IF the value is a number datataype.
 //example:
 //getNumberEntries(purchases[0]);                     // [ ['quantity', 2 ], ['price', 12.99] ]
-  //^^function call ^purchase object [index location] return array ^sub array key, value  in ^ array
-;
-
-console.log(getNumberEntries(purchases));
-
+//^^function call ^purchase object [index location] return array ^sub array key, value  in ^ array
 // #2 // 
+
 const addKeyValuePairs = (object, additions) => {
-  
+  if (additions = []){
+    return object;
+  } else {
+  object.additions[0][0] += additions[0][1];
+  additions = additions.slice(0,1);
+  console.log(additions)
+  return addKeyValuePairs(object, additions);
+  }
 };
+
+console.log(addKeyValuePairs(purchases[1], [ ['purchasedPreviously', false], ['initiatedReturn', true] ]));
 
 // #3 //
 const filterByPrice = (array, price) => {
@@ -120,9 +125,13 @@ console.log(accumulateString(purchases))
 // #6 //
 const findProduct = (array, product) => {
   //base case - if the iteration's product description matches product
+if (array[0].product === product){
   // loop through array by calling findproduct() again on what?
-  
-};
+  return array[0];
+} else {
+  array = array.slice(0,1);
+  return findProduct(array, product)
+}};
 
 // #7 //
 const filterByReviewLength = (array) => {
