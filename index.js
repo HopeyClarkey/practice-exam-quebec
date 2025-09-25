@@ -71,8 +71,21 @@ const purchases = [
 
 // #1 // 
 const getNumberEntries = (object) => {
-  
-};
+//create a function that takes in 1 param, a purchase object.
+  stArr =[];
+  for (let [key,value] in object){
+    let stArr = object.filter((keys) => typeof value === 'number' ? [key, value] : 0 );
+    }
+    console.log(stArr);
+  }
+//each sub array should include the key and the value from the object 
+//IF the value is a number datataype.
+//example:
+//getNumberEntries(purchases[0]);                     // [ ['quantity', 2 ], ['price', 12.99] ]
+  //^^function call ^purchase object [index location] return array ^sub array key, value  in ^ array
+;
+
+console.log(getNumberEntries(purchases));
 
 // #2 // 
 const addKeyValuePairs = (object, additions) => {
@@ -81,27 +94,46 @@ const addKeyValuePairs = (object, additions) => {
 
 // #3 //
 const filterByPrice = (array, price) => {
-
+  //create function that takes in array and price
+  let newArr = array.filter((purchase) => purchase.price > price);
+  //create new array that comprises the filter that is greater than price
+  return newArr;
 };
 
 // #4 //
 const mapPurchases = (array) => {
-  
+  let newArr = array.map((purchase) => purchase.product.toUpperCase() + " - " + "Review: " + purchase.mostLikedReviews[0].text);
+  console.log(newArr);
+  return newArr;
 };
-
 // #5 //
 const accumulateString = (array) => {
-  
-};
+  let blankString = '';
+  let newString = array.reduce((blankString, current) => current.product[current.quantity.length-1] + blankString, ' ');
+  console.log(newString);
+  return (newString);
+
+}
+
+console.log(accumulateString(purchases))
 
 // #6 //
 const findProduct = (array, product) => {
+  //base case - if the iteration's product description matches product
+  // loop through array by calling findproduct() again on what?
   
 };
 
 // #7 //
 const filterByReviewLength = (array) => {
-  
+//create function that takes in array and price
+let stArr = [];
+  for (i = 0; i < array.length; i++){
+    let purchase = array[i];
+  let reviews = purchase.mostLikedReviews.filter((review) =>  review.length > 35);
+  stArr.push(reviews);
+}
+return stArr;
 };
 
 
